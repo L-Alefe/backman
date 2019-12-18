@@ -1,0 +1,17 @@
+<div class="container">
+  <table class="table table-striped" id="listaDeContatos">
+    <thead class="thead-dark">
+      <tr>
+        <th>Id</th>
+        <th>Descrição</th>
+        <th>Status</th>
+      </tr>
+    </thead>
+
+    <tr *ngFor="let c of categorias" scope="row" class="testelm">
+      <td>{{ c.id }}</td>
+      <td>{{ c.descricao }}</td>
+      <td>{{ c.status }}</td>
+    </tr>
+  </table>
+</div>

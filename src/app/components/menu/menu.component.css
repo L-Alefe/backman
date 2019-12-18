@@ -1,0 +1,64 @@
+div.menu ul.ulMenu li.liMenu {
+  display: inline-block;
+}
+img#colap {
+  cursor: pointer;
+}
+div.mobileMenu {
+  background: #007dc5;
+  width: 100%;
+  padding: 15px;
+  position: fixed;
+  z-index: 9999;
+}
+div.menuPai {
+  padding-bottom: 54px;
+}
+div#listaMobile {
+  background-color: #008ada;
+  margin-top: 54px;
+  width: 100%;
+  position: fixed;
+  z-index: 9999;
+}
+@media (min-width: 551px) {
+  div.mobileMenu {
+    display: none;
+  }
+}
+div.menu {
+  background: #007dc5;
+  width: 100%;
+  padding: 15px;
+  position: fixed;
+  z-index: 9999;
+}
+@media (max-width: 550px) {
+  div.menu {
+    display: none;
+  }
+}
+ul.ulMenu {
+  list-style-type: none;
+  display: inline;
+  margin-left: -55px;
+}
+@media (max-width: 550px) {
+  ul.ulMenu li.liMenu {
+    margin-bottom: 20px;
+  }
+}
+ul.ulMenu li.liMenu a.aMenu {
+  text-decoration: none;
+  color: #fff;
+  padding: 15px;
+}
+ul.ulMenu li.liMenu a.aMenu:hover {
+  background: #0067ac;
+  transition-duration: 0.55s;
+}
+@media (max-width: 550px) {
+  ul.ulMenu li.liMenu {
+    width: 100%;
+  }
+}
