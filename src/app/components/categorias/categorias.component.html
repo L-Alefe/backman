@@ -1,17 +1,37 @@
-<div class="container">
-  <table class="table table-striped" id="listaDeContatos">
-    <thead class="thead-dark">
-      <tr>
-        <th>Id</th>
-        <th>Descrição</th>
-        <th>Status</th>
-      </tr>
-    </thead>
-
-    <tr *ngFor="let c of categorias" scope="row" class="testelm">
-      <td>{{ c.id }}</td>
-      <td>{{ c.descricao }}</td>
-      <td>{{ c.status }}</td>
+<app-buttons [scopeCategorias]="scope.categorias"></app-buttons>
+<table class="table table-hover" id="listaDeContatos">
+  <thead class="thead-dark">
+    <tr>
+      <th>
+        <div class="custom-control custom-checkbox">
+          <input type="checkbox" class="custom-control-input" id="checkAll" />
+          <label class="custom-control-label" for="checkAll"></label>
+        </div>
+      </th>
+      <th>Id</th>
+      <th>Descrição</th>
+      <th>Status</th>
     </tr>
-  </table>
-</div>
+  </thead>
+
+  <tr
+    *ngFor="let c of scope.categorias; let i = index"
+    scope="row"
+    class="testelm"
+  >
+    <td>
+      <div class="custom-control custom-checkbox">
+        <input
+          type="checkbox"
+          class="custom-control-input"
+          id="checkAll{{ i }}"
+          [(ngModel)]="c.checked"
+        />
+        <label class="custom-control-label" for="checkAll{{ i }}"></label>
+      </div>
+    </td>
+    <td>{{ c.id }}</td>
+    <td>{{ c.descricao }}</td>
+    <td>{{ c.status }}</td>
+  </tr>
+</table>

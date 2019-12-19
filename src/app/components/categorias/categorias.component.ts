@@ -7,13 +7,21 @@ import { CategoriasService } from "../../services/categorias.service";
   styleUrls: ["./categorias.component.css"]
 })
 export class CategoriasComponent implements OnInit {
-  categorias = [];
+  scope: any = {
+    categorias: []
+  };
 
   constructor(private categoriasService: CategoriasService) {}
 
   ngOnInit() {
-    this.categoriasService.get().subscribe(contato => {
-      this.categorias = contato;
-    });
+    this.preencheTable();
   }
+  preencheTable = () => {
+    this.categoriasService.get().subscribe(categoria => {
+      this.scope.categorias = categoria;
+      this.scope.categorias.map(item => {
+        item.checked = false;
+      });
+    });
+  };
 }

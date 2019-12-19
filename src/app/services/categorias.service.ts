@@ -12,4 +12,7 @@ export class CategoriasService {
   get(): Observable<any> {
     return this.http.get(this.produtoUrl);
   }
+  getPorId(id: any): Observable<any> {
+    return this.http.get(`${this.produtoUrl}/${id}`);
+  }
 }

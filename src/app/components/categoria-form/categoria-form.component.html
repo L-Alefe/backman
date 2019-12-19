@@ -1,0 +1,21 @@
+<form>
+  <div class="form-group">
+    <label>Descrição</label>
+    <input
+      [(ngModel)]="scope.descricao"
+      type="text"
+      class="form-control"
+      name="descricao"
+    />
+  </div>
+  <div class="form-group form-check">
+    <input
+      [(ngModel)]="scope.status"
+      type="checkbox"
+      class="form-check-input"
+      name="status"
+    />
+    <label class="form-check-label">Status</label>
+  </div>
+</form>
+{{ this.scope.descricao }}
