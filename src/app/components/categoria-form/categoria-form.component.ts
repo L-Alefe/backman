@@ -25,13 +25,17 @@ export class CategoriaFormComponent implements OnInit {
     this.requisitaCategoriaPorId();
   }
   requisitaCategoriaPorId = () => {
-    let idCategoria: any = parseInt(this.route.snapshot.paramMap.get("id"));
-    this.categoriasService.getPorId(idCategoria).subscribe(item => {
-      this.scope.descricao = item[0].descricao;
-      this.scope.status =
-        item[0].status === 1
-          ? (this.scope.checked = true)
-          : (this.scope.checked = false);
-    });
+    let idCategoria: any =
+      parseInt(this.route.snapshot.paramMap.get("id")) || null;
+    if (idCategoria) {
+      this.categoriasService.getPorId(idCategoria).subscribe(item => {
+        let key = item.length - 1;
+        this.scope.descricao = item[key].descricao;
+        this.scope.status =
+          item[key].status === 1
+            ? (this.scope.checked = true)
+            : (this.scope.checked = false);
+      });
+    }
   };
 }

@@ -9,6 +9,7 @@ import { AppRoutingModule } from "./app-routing.module";
 import { HttpClientModule } from "@angular/common/http";
 import { ButtonsComponent } from "./components/buttons/buttons.component";
 import { CategoriaFormComponent } from "./components/categoria-form/categoria-form.component";
+import { HomeComponent } from './components/home/home.component';
 
 @NgModule({
   declarations: [
@@ -16,7 +17,8 @@ import { CategoriaFormComponent } from "./components/categoria-form/categoria-fo
     CategoriasComponent,
     MenuComponent,
     ButtonsComponent,
-    CategoriaFormComponent
+    CategoriaFormComponent,
+    HomeComponent
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
   providers: [],
