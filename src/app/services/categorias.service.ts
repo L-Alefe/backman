@@ -15,4 +15,7 @@ export class CategoriasService {
   getPorId(id: any): Observable<any> {
     return this.http.get(`${this.produtoUrl}/${id}`);
   }
+  deletePorId(id: any): Observable<any> {
+    return this.http.delete(`${this.produtoUrl}/excluir/${id}`);
+  }
 }
