@@ -9,12 +9,17 @@
     />
   </div>
   <div class="form-group form-check">
-    <input
-      [(ngModel)]="scope.status"
-      type="checkbox"
-      class="form-check-input"
-      name="status"
-    />
-    <label class="form-check-label">Status</label>
+    <div class="custom-control custom-checkbox">
+      <input
+        type="checkbox"
+        class="custom-control-input"
+        name="status"
+        id="checkAll"
+        [(ngModel)]="scope.status"
+      />
+      <label class="custom-control-label" for="checkAll">Status</label>
+    </div>
   </div>
 </form>
+
+<app-buttons-form [scopeCategorias]="scope"></app-buttons-form>

@@ -10,6 +10,7 @@ import { HttpClientModule } from "@angular/common/http";
 import { ButtonsComponent } from "./components/buttons/buttons.component";
 import { CategoriaFormComponent } from "./components/categoria-form/categoria-form.component";
 import { HomeComponent } from './components/home/home.component';
+import { ButtonsFormComponent } from './components/buttons-form/buttons-form.component';
 
 @NgModule({
   declarations: [
@@ -18,7 +19,8 @@ import { HomeComponent } from './components/home/home.component';
     MenuComponent,
     ButtonsComponent,
     CategoriaFormComponent,
-    HomeComponent
+    HomeComponent,
+    ButtonsFormComponent
   ],
   imports: [BrowserModule, HttpClientModule, AppRoutingModule, FormsModule],
   providers: [],

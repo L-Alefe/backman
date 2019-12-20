@@ -54,11 +54,14 @@ export class ButtonsComponent implements OnInit {
       alert("Selecione pelo menos um registro.");
       idSelecionado = null;
     } else if (cont > 1) {
-      alert("Selecione apenas um registro.");
+      alert("Só se pode excluir um por vez.");
       idSelecionado = null;
     } else {
       this.categoriaService.deletePorId(idSelecionado).subscribe(item => {
-        if (item) this.reloadEmitter.emit();
+        if (item) {
+          this.reloadEmitter.emit();
+          alert("Registro excluído com sucesso!");
+        }
       });
     }
   };

@@ -18,4 +18,10 @@ export class CategoriasService {
   deletePorId(id: any): Observable<any> {
     return this.http.delete(`${this.produtoUrl}/excluir/${id}`);
   }
+  inseriCategoria(model: any): Observable<any> {
+    return this.http.post(`${this.produtoUrl}/inserir`, model);
+  }
+  updateCategoria(model: any): Observable<any> {
+    return this.http.put(`${this.produtoUrl}/update`, model);
+  }
 }

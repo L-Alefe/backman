@@ -12,7 +12,8 @@ import { CategoriasService } from "src/app/services/categorias.service";
 export class CategoriaFormComponent implements OnInit {
   scope: any = {
     descricao: "",
-    status: 0
+    status: 0,
+    id: null
   };
   subscription: Subscription;
 
@@ -35,6 +36,7 @@ export class CategoriaFormComponent implements OnInit {
           item[key].status === 1
             ? (this.scope.checked = true)
             : (this.scope.checked = false);
+        this.scope.id = item[key].id;
       });
     }
   };
