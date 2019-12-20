@@ -5,7 +5,7 @@ img#colap {
   cursor: pointer;
 }
 div.mobileMenu {
-  background: #007dc5;
+  background: #00c573;
   width: 100%;
   padding: 15px;
   position: fixed;
@@ -15,7 +15,7 @@ div.menuPai {
   padding-bottom: 54px;
 }
 div#listaMobile {
-  background-color: #008ada;
+  background-color: #02c584;
   margin-top: 54px;
   width: 100%;
   position: fixed;
@@ -27,7 +27,7 @@ div#listaMobile {
   }
 }
 div.menu {
-  background: #007dc5;
+  background: #00c573;
   width: 100%;
   padding: 15px;
   position: fixed;
@@ -54,7 +54,7 @@ ul.ulMenu li.liMenu a.aMenu {
   padding: 15px;
 }
 ul.ulMenu li.liMenu a.aMenu:hover {
-  background: #0067ac;
+  background: #00ac56;
   transition-duration: 0.55s;
 }
 @media (max-width: 550px) {
