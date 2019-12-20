@@ -1,6 +1,7 @@
-import { Component, OnInit, Input } from "@angular/core";
+import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { Router } from "@angular/router";
 import { SubjectService } from "src/app/services/subject.service.service";
+import { CategoriasService } from "src/app/services/categorias.service";
 
 @Component({
   selector: "app-buttons",
@@ -9,9 +10,13 @@ import { SubjectService } from "src/app/services/subject.service.service";
 })
 export class ButtonsComponent implements OnInit {
   @Input() scopeCategorias: any;
+  @Output() reloadEmitter = new EventEmitter();
   categoriaSelecionada: any = null;
 
-  constructor(private router: Router) {}
+  constructor(
+    private router: Router,
+    private categoriaService: CategoriasService
+  ) {}
 
   ngOnInit() {}
 
@@ -32,6 +37,29 @@ export class ButtonsComponent implements OnInit {
       this.router.navigate([
         `/categorias/form/${this.categoriaSelecionada.id}`
       ]);
+    }
+  };
+
+  excluiCategoria = () => {
+    let cont = 0;
+    let idSelecionado = null;
+    this.scopeCategorias.map(categoria => {
+      if (categoria.checked) {
+        this.categoriaSelecionada = categoria;
+        idSelecionado = this.categoriaSelecionada.id;
+        cont++;
+      }
+    });
+    if (cont === 0) {
+      alert("Selecione pelo menos um registro.");
+      idSelecionado = null;
+    } else if (cont > 1) {
+      alert("Selecione apenas um registro.");
+      idSelecionado = null;
+    } else {
+      this.categoriaService.deletePorId(idSelecionado).subscribe(item => {
+        if (item) this.reloadEmitter.emit();
+      });
     }
   };
 }
