@@ -10,6 +10,7 @@ import { CategoriasService } from "src/app/services/categorias.service";
 })
 export class ButtonsComponent implements OnInit {
   @Input() scopeCategorias: any;
+  @Input() static: boolean;
   @Output() reloadEmitter = new EventEmitter();
   categoriaSelecionada: any = null;
 
@@ -64,5 +65,9 @@ export class ButtonsComponent implements OnInit {
         }
       });
     }
+  };
+
+  reload = () => {
+    this.reloadEmitter.emit();
   };
 }

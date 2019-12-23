@@ -1,0 +1,27 @@
+<div class="col">
+  <div ngbDropdown class="d-inline-block">
+    <button
+      class="btn btn-outline-primary"
+      id="dropdownBasic1"
+      ngbDropdownToggle
+    ></button>
+    <div
+      ngbDropdownMenu
+      aria-labelledby="dropdownBasic1"
+      style="padding: 10px;"
+    >
+      <div *ngFor="let c of columns; let i = index">
+        <div class="custom-control custom-checkbox">
+          <input
+            type="checkbox"
+            class="custom-control-input"
+            id="checkAll{{ i }}"
+            [(ngModel)]="c.show"
+          />
+          <label class="custom-control-label" for="checkAll{{ i }}"></label>
+          {{ c.nome }}
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

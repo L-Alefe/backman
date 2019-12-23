@@ -1,9 +1,11 @@
 <app-buttons
   [scopeCategorias]="scope.categorias"
   (reloadEmitter)="preencheTable()"
+  [static]="true"
 ></app-buttons>
+<app-show-columns [columns]="scope.colunasCategorias"></app-show-columns>
 <table class="table table-hover" id="listaDeContatos">
-  <thead class="thead-dark">
+  <thead>
     <tr>
       <th>
         <div class="custom-control custom-checkbox">
@@ -11,9 +13,9 @@
           <label class="custom-control-label" for="checkAll"></label>
         </div>
       </th>
-      <th>Id</th>
-      <th>Descrição</th>
-      <th>Status</th>
+      <th *ngFor="let c of scope.colunasCategorias" [hidden]="!c.show">
+        <span [hidden]="!c.show">{{ c.nome }}</span>
+      </th>
     </tr>
   </thead>
 
@@ -21,20 +23,39 @@
     *ngFor="let c of scope.categorias; let i = index"
     scope="row"
     class="testelm"
+    ng-show="scope.categorias"
   >
     <td>
       <div class="custom-control custom-checkbox">
-        <input
-          type="checkbox"
-          class="custom-control-input"
-          id="checkAll{{ i }}"
-          [(ngModel)]="c.checked"
-        />
-        <label class="custom-control-label" for="checkAll{{ i }}"></label>
+        <div
+          ngbDropdown
+          role="group"
+          aria-label="Checkbox with nested dropdown"
+        >
+          <input
+            type="checkbox"
+            class="custom-control-input"
+            id="checkAll{{ i }}"
+            [(ngModel)]="c.checked"
+            ngbDropdownToggle
+          />
+          <label class="custom-control-label" for="checkAll{{ i }}"></label>
+          <div class="dropdown-menu" ngbDropdownMenu>
+            <app-buttons
+              [scopeCategorias]="scope.categorias"
+              (reloadEmitter)="preencheTable()"
+              [static]="false"
+            ></app-buttons>
+          </div>
+        </div>
       </div>
     </td>
-    <td>{{ c.id }}</td>
-    <td>{{ c.descricao }}</td>
-    <td>{{ c.status === 1 ? true : false }}</td>
+    <td [hidden]="!scope.colunasCategorias[0].show">{{ c.id }}</td>
+    <td [hidden]="!scope.colunasCategorias[1].show">{{ c.descricao }}</td>
+    <td [hidden]="!scope.colunasCategorias[2].show">
+      {{ c.status === 1 ? "Ativo" : "Inativo" }}
+    </td>
   </tr>
 </table>
+
+<app-pre-loading [hidden]="keyLoad"></app-pre-loading>

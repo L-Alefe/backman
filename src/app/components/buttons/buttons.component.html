@@ -1,17 +1,33 @@
-<button
-  type="button"
-  class="btn btn-outline-danger"
-  (click)="excluiCategoria()"
->
-  Excluir
-</button>
-<button type="button" class="btn btn-outline-warning" (click)="validaEdicao()">
-  Editar
-</button>
-<button
-  type="button"
-  class="btn btn-outline-success"
-  routerLink="/categorias/form"
->
-  Novo
-</button>
+<div [hidden]="!static">
+  <button type="button" (click)="excluiCategoria()" class="btn btn-danger">
+    Excluir
+  </button>
+  <button type="button" (click)="validaEdicao()" class="btn btn-warning">
+    Editar
+  </button>
+  <button type="button" class="btn btn-success" routerLink="/categorias/form">
+    Novo
+  </button>
+  <button type="button" class="btn btn-secondary" (click)="reload()">
+    Reload
+  </button>
+</div>
+
+<div [hidden]="static">
+  <button
+    type="button"
+    ngbDropdownItem
+    (click)="validaEdicao()"
+    class="text-warning"
+  >
+    Editar
+  </button>
+  <button
+    type="button"
+    ngbDropdownItem
+    (click)="excluiCategoria()"
+    class="text-danger"
+  >
+    Excluir
+  </button>
+</div>
