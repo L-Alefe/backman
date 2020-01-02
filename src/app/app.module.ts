@@ -14,6 +14,7 @@ import { HomeComponent } from "./components/home/home.component";
 import { ButtonsFormComponent } from "./components/buttons-form/buttons-form.component";
 import { PreLoadingComponent } from './components/pre-loading/pre-loading.component';
 import { ShowColumnsComponent } from './components/show-columns/show-columns.component';
+import { FilterInputComponent } from './components/filter-input/filter-input.component';
 
 @NgModule({
   declarations: [
@@ -25,7 +26,8 @@ import { ShowColumnsComponent } from './components/show-columns/show-columns.com
     HomeComponent,
     ButtonsFormComponent,
     PreLoadingComponent,
-    ShowColumnsComponent
+    ShowColumnsComponent,
+    FilterInputComponent
   ],
   imports: [
     BrowserModule,

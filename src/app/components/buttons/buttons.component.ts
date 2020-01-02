@@ -21,9 +21,30 @@ export class ButtonsComponent implements OnInit {
 
   ngOnInit() {}
 
+  validaVisualizacao = () => {
+    let cont = 0;
+    this.scopeCategorias.categorias.map(categoria => {
+      if (categoria.checked) {
+        this.categoriaSelecionada = categoria;
+        cont++;
+      }
+    });
+    if (cont === 0) {
+      alert("Selecione pelo menos um registro.");
+      // this.categoriaSelecionada = null;
+    } else if (cont > 1) {
+      alert("Selecione apenas um registro.");
+    } else {
+      this.router.navigate([
+        `/categorias/form/${this.categoriaSelecionada.id}`,
+        { v: true }
+      ]);
+    }
+  };
+
   validaEdicao = () => {
     let cont = 0;
-    this.scopeCategorias.map(categoria => {
+    this.scopeCategorias.categorias.map(categoria => {
       if (categoria.checked) {
         this.categoriaSelecionada = categoria;
         cont++;
@@ -44,7 +65,7 @@ export class ButtonsComponent implements OnInit {
   excluiCategoria = () => {
     let cont = 0;
     let idSelecionado = null;
-    this.scopeCategorias.map(categoria => {
+    this.scopeCategorias.categorias.map(categoria => {
       if (categoria.checked) {
         this.categoriaSelecionada = categoria;
         idSelecionado = this.categoriaSelecionada.id;

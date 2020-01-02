@@ -1,9 +1,14 @@
 <app-buttons
-  [scopeCategorias]="scope.categorias"
+  [scopeCategorias]="scope"
   (reloadEmitter)="preencheTable()"
   [static]="true"
+  style="float: right;"
 ></app-buttons>
-<app-show-columns [columns]="scope.colunasCategorias"></app-show-columns>
+<app-show-columns
+  [columns]="scope.colunasCategorias"
+  style="float: left;"
+></app-show-columns>
+<app-filter-input (filtro)="filtraTabela($event)"></app-filter-input>
 <table class="table table-hover" id="listaDeContatos">
   <thead>
     <tr>
@@ -35,14 +40,14 @@
           <input
             type="checkbox"
             class="custom-control-input"
-            id="checkAll{{ i }}"
+            id="checkAlla{{ i }}"
             [(ngModel)]="c.checked"
             ngbDropdownToggle
           />
-          <label class="custom-control-label" for="checkAll{{ i }}"></label>
+          <label class="custom-control-label" for="checkAlla{{ i }}"></label>
           <div class="dropdown-menu" ngbDropdownMenu>
             <app-buttons
-              [scopeCategorias]="scope.categorias"
+              [scopeCategorias]="scope"
               (reloadEmitter)="preencheTable()"
               [static]="false"
             ></app-buttons>
@@ -53,9 +58,16 @@
     <td [hidden]="!scope.colunasCategorias[0].show">{{ c.id }}</td>
     <td [hidden]="!scope.colunasCategorias[1].show">{{ c.descricao }}</td>
     <td [hidden]="!scope.colunasCategorias[2].show">
-      {{ c.status === 1 ? "Ativo" : "Inativo" }}
+      {{ c.status ? "Ativo" : "Inativo" }}
     </td>
   </tr>
 </table>
 
-<app-pre-loading [hidden]="keyLoad"></app-pre-loading>
+<div
+  *ngIf="scope.categorias.length === 0 && keyLoad"
+  class="alert alert-danger"
+  role="alert"
+>
+  Não foi possível encontrar registros!
+</div>
+<app-pre-loading *ngIf="!keyLoad"></app-pre-loading>

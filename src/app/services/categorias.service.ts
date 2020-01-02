@@ -7,21 +7,30 @@ import { Observable } from "rxjs";
   providedIn: "root"
 })
 export class CategoriasService {
-  produtoUrl = "http://localhost:8080/categorias";
+  mercadoUrl = "http://localhost:8080/categorias";
   constructor(private http: HttpClient) {}
+
   get(): Observable<any> {
-    return this.http.get(this.produtoUrl);
+    return this.http.get(this.mercadoUrl);
   }
+
   getPorId(id: any): Observable<any> {
-    return this.http.get(`${this.produtoUrl}/${id}`);
+    return this.http.get(`${this.mercadoUrl}/${id}`);
   }
+
   deletePorId(id: any): Observable<any> {
-    return this.http.delete(`${this.produtoUrl}/excluir/${id}`);
+    return this.http.delete(`${this.mercadoUrl}/excluir/${id}`);
   }
+
   inseriCategoria(model: any): Observable<any> {
-    return this.http.post(`${this.produtoUrl}/inserir`, model);
+    return this.http.post(`${this.mercadoUrl}/inserir`, model);
   }
+
   updateCategoria(model: any): Observable<any> {
-    return this.http.put(`${this.produtoUrl}/update`, model);
+    return this.http.put(`${this.mercadoUrl}/update`, model);
+  }
+
+  getCategoriaPorNome(nome: string): Observable<any> {
+    return this.http.get(`${this.mercadoUrl}/nome/${nome}`);
   }
 }

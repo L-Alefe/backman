@@ -1,12 +1,15 @@
 <div [hidden]="!static">
-  <button type="button" (click)="excluiCategoria()" class="btn btn-danger">
-    Excluir
+  <button type="button" class="btn btn-success" routerLink="/categorias/form">
+    Novo
   </button>
   <button type="button" (click)="validaEdicao()" class="btn btn-warning">
     Editar
   </button>
-  <button type="button" class="btn btn-success" routerLink="/categorias/form">
-    Novo
+  <button type="button" (click)="excluiCategoria()" class="btn btn-danger">
+    Excluir
+  </button>
+  <button type="button" (click)="validaVisualizacao()" class="btn btn-info">
+    Visualizar
   </button>
   <button type="button" class="btn btn-secondary" (click)="reload()">
     Reload
@@ -29,5 +32,13 @@
     class="text-danger"
   >
     Excluir
+  </button>
+  <button
+    type="button"
+    ngbDropdownItem
+    (click)="validaVisualizacao()"
+    class="text-info"
+  >
+    Visualizar
   </button>
 </div>

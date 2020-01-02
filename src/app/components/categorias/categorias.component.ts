@@ -1,4 +1,8 @@
-import { Component, OnInit } from "@angular/core";
+import {
+  Component,
+  OnInit,
+  ɵclearResolutionOfComponentResourcesQueue
+} from "@angular/core";
 import { CategoriasService } from "../../services/categorias.service";
 
 @Component({
@@ -11,7 +15,7 @@ export class CategoriasComponent implements OnInit {
     categorias: [],
     colunasCategorias: []
   };
-  keyLoad: boolean;
+  keyLoad: boolean = false;
 
   constructor(private categoriasService: CategoriasService) {}
 
@@ -23,15 +27,29 @@ export class CategoriasComponent implements OnInit {
     ];
     this.preencheTable();
   }
+
+  filtraTabela = (event: any) => {
+    if (event) {
+      this.keyLoad = false;
+      this.categoriasService.getCategoriaPorNome(event).subscribe(result => {
+        let aux: any = [];
+        aux.push(result);
+        this.scope.categorias = aux;
+      });
+      this.keyLoad = true;
+    } else {
+      this.preencheTable();
+    }
+  };
+
   preencheTable = () => {
-    this.scope.categorias = [];
     this.keyLoad = false;
     this.categoriasService.get().subscribe(categoria => {
       this.scope.categorias = categoria;
       this.scope.categorias.map(item => {
         item.checked = false;
-        this.keyLoad = true;
       });
+      this.keyLoad = true;
     });
   };
 }

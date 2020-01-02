@@ -10,7 +10,7 @@ export class ButtonsFormComponent implements OnInit {
   constructor(private categoriasService: CategoriasService) {}
 
   @Input() scopeCategorias: any;
-
+  @Input() isView: any;
   ngOnInit() {}
   voltarPagina = () => {
     history.back();
@@ -22,16 +22,12 @@ export class ButtonsFormComponent implements OnInit {
     if (this.scopeCategorias.id) {
       this.categoriasService
         .updateCategoria(this.scopeCategorias)
-        .subscribe(item => {
-          this.voltarPagina();
-        });
+        .subscribe(() => this.voltarPagina());
     } else {
       delete this.scopeCategorias["id"];
       this.categoriasService
         .inseriCategoria(this.scopeCategorias)
-        .subscribe(item => {
-          this.voltarPagina();
-        });
+        .subscribe(() => this.voltarPagina());
     }
   };
 }

@@ -16,6 +16,7 @@ export class CategoriaFormComponent implements OnInit {
     id: null
   };
   subscription: Subscription;
+  isView: boolean = false;
 
   constructor(
     private route: ActivatedRoute,
@@ -26,17 +27,15 @@ export class CategoriaFormComponent implements OnInit {
     this.requisitaCategoriaPorId();
   }
   requisitaCategoriaPorId = () => {
+    if (Boolean(this.route.snapshot.paramMap.get("v"))) {
+      this.isView = true;
+    }
     let idCategoria: any =
       parseInt(this.route.snapshot.paramMap.get("id")) || null;
     if (idCategoria) {
       this.categoriasService.getPorId(idCategoria).subscribe(item => {
         let key = item.length - 1;
-        this.scope.descricao = item[key].descricao;
-        this.scope.status =
-          item[key].status === 1
-            ? (this.scope.checked = true)
-            : (this.scope.checked = false);
-        this.scope.id = item[key].id;
+        this.scope = item[key];
       });
     }
   };
