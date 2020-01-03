@@ -1,14 +1,3 @@
-<app-buttons
-  [scopeCategorias]="scope"
-  (reloadEmitter)="preencheTable()"
-  [static]="true"
-  style="float: right;"
-></app-buttons>
-<app-show-columns
-  [columns]="scope.colunasCategorias"
-  style="float: left;"
-></app-show-columns>
-<app-filter-input (filtro)="filtraTabela($event)"></app-filter-input>
 <table class="table table-hover" id="listaDeContatos">
   <thead>
     <tr>

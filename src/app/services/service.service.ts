@@ -6,9 +6,9 @@ import { Observable } from "rxjs";
 @Injectable({
   providedIn: "root"
 })
-export class CategoriasService {
-  mercadoUrl = "http://localhost:8080/categorias";
-  constructor(private http: HttpClient) {}
+export class Service {
+  constructor(public http: HttpClient, public direcao: string) {}
+  mercadoUrl = "http://localhost:8080/" + this.direcao;
 
   get(): Observable<any> {
     return this.http.get(this.mercadoUrl);
@@ -22,15 +22,15 @@ export class CategoriasService {
     return this.http.delete(`${this.mercadoUrl}/excluir/${id}`);
   }
 
-  inseriCategoria(model: any): Observable<any> {
+  inserir(model: any): Observable<any> {
     return this.http.post(`${this.mercadoUrl}/inserir`, model);
   }
 
-  updateCategoria(model: any): Observable<any> {
+  update(model: any): Observable<any> {
     return this.http.put(`${this.mercadoUrl}/update`, model);
   }
 
-  getCategoriaPorNome(nome: string): Observable<any> {
+  getPorNome(nome: string): Observable<any> {
     return this.http.get(`${this.mercadoUrl}/nome/${nome}`);
   }
 }

@@ -1,5 +1,5 @@
 import { Component, OnInit, Input } from "@angular/core";
-import { CategoriasService } from "src/app/services/categorias.service";
+import { CategoriaService } from "../../services/categoria/categoria.service";
 
 @Component({
   selector: "app-buttons-form",
@@ -7,7 +7,7 @@ import { CategoriasService } from "src/app/services/categorias.service";
   styleUrls: ["./buttons-form.component.css"]
 })
 export class ButtonsFormComponent implements OnInit {
-  constructor(private categoriasService: CategoriasService) {}
+  constructor(private categoriasService: CategoriaService) {}
 
   @Input() scopeCategorias: any;
   @Input() isView: any;
@@ -21,12 +21,12 @@ export class ButtonsFormComponent implements OnInit {
       : (this.scopeCategorias.status = 0);
     if (this.scopeCategorias.id) {
       this.categoriasService
-        .updateCategoria(this.scopeCategorias)
+        .update(this.scopeCategorias)
         .subscribe(() => this.voltarPagina());
     } else {
       delete this.scopeCategorias["id"];
       this.categoriasService
-        .inseriCategoria(this.scopeCategorias)
+        .inserir(this.scopeCategorias)
         .subscribe(() => this.voltarPagina());
     }
   };

@@ -1,8 +1,7 @@
 import { Component, OnInit } from "@angular/core";
-import { SubjectService } from "src/app/services/subject.service.service";
 import { Subscription } from "rxjs";
 import { ActivatedRoute } from "@angular/router";
-import { CategoriasService } from "src/app/services/categorias.service";
+import { CategoriaService } from "../../../services/categoria/categoria.service";
 
 @Component({
   selector: "app-categoria-form",
@@ -20,7 +19,7 @@ export class CategoriaFormComponent implements OnInit {
 
   constructor(
     private route: ActivatedRoute,
-    private categoriasService: CategoriasService
+    private categoriasService: CategoriaService
   ) {}
 
   ngOnInit() {

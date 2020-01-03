@@ -1,9 +1,5 @@
-import {
-  Component,
-  OnInit,
-  ɵclearResolutionOfComponentResourcesQueue
-} from "@angular/core";
-import { CategoriasService } from "../../services/categorias.service";
+import { Component, OnInit } from "@angular/core";
+import { CategoriaService } from "../../services/categoria/categoria.service";
 
 @Component({
   selector: "app-categorias",
@@ -17,7 +13,7 @@ export class CategoriasComponent implements OnInit {
   };
   keyLoad: boolean = false;
 
-  constructor(private categoriasService: CategoriasService) {}
+  constructor(private categoriasService: CategoriaService) {}
 
   ngOnInit() {
     this.scope.colunasCategorias = [
@@ -31,7 +27,7 @@ export class CategoriasComponent implements OnInit {
   filtraTabela = (event: any) => {
     if (event) {
       this.keyLoad = false;
-      this.categoriasService.getCategoriaPorNome(event).subscribe(result => {
+      this.categoriasService.getPorNome(event).subscribe(result => {
         let aux: any = [];
         aux.push(result);
         this.scope.categorias = aux;

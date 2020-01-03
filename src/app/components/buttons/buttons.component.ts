@@ -1,8 +1,6 @@
 import { Component, OnInit, Input, Output, EventEmitter } from "@angular/core";
 import { Router } from "@angular/router";
-import { SubjectService } from "src/app/services/subject.service.service";
-import { CategoriasService } from "src/app/services/categorias.service";
-
+import { CategoriaService } from "../../services/categoria/categoria.service";
 @Component({
   selector: "app-buttons",
   templateUrl: "./buttons.component.html",
@@ -16,7 +14,7 @@ export class ButtonsComponent implements OnInit {
 
   constructor(
     private router: Router,
-    private categoriaService: CategoriasService
+    private categoriaService: CategoriaService
   ) {}
 
   ngOnInit() {}
