@@ -18,6 +18,7 @@ import { FilterInputComponent } from "./components/filter-input/filter-input.com
 import { TableComponent } from "./components/table/table.component";
 import { ProdutosComponent } from "./modules/produto/produtos.component";
 import { LoginComponent } from "./modules/login/login.component";
+import { AuthService } from "./modules/login/auth/auth.service";
 
 @NgModule({
   declarations: [
@@ -42,7 +43,7 @@ import { LoginComponent } from "./modules/login/login.component";
     FormsModule,
     NgbModule
   ],
-  providers: [],
+  providers: [AuthService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}
