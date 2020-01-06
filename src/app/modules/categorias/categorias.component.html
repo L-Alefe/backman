@@ -1,12 +1,14 @@
-<app-buttons
-  [scopeCategorias]="scope"
-  (reloadEmitter)="preencheTable()"
-  [static]="true"
-  style="float: right;"
-></app-buttons>
-<app-show-columns
-  [columns]="scope.colunasCategorias"
-  style="float: left;"
-></app-show-columns>
-<app-filter-input (filtro)="filtraTabela($event)"></app-filter-input>
-<app-table [scope]="scope" [keyLoad]="keyLoad"></app-table>
+<div class="container">
+  <app-buttons
+    [scopeCategorias]="scope"
+    (reloadEmitter)="preencheTable()"
+    [static]="true"
+    style="float: right;"
+  ></app-buttons>
+  <app-show-columns
+    [columns]="scope.colunasCategorias"
+    style="float: left;"
+  ></app-show-columns>
+  <app-filter-input (filtro)="filtraTabela($event)"></app-filter-input>
+  <app-table [scope]="scope" [keyLoad]="keyLoad"></app-table>
+</div>

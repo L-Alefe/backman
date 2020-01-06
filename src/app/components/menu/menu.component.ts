@@ -34,4 +34,7 @@ export class MenuComponent implements OnInit {
       }
     });
   };
+  sair = () => {
+    location.reload();
+  };
 }

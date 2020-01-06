@@ -1,9 +1,13 @@
 <div class="menuPai">
   <div class="menu">
     <ul class="ulMenu">
-      <li class="liMenu"><a routerLink="/" class="aMenu">Home</a></li>
       <li class="liMenu">
         <a routerLink="/categorias" class="aMenu">Lista de Categorias</a>
+      </li>
+      <li class="liMenu" (click)="sair()">
+        <a class="aMenu" href="">
+          Sair
+        </a>
       </li>
     </ul>
   </div>

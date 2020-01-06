@@ -3,15 +3,27 @@ import { CommonModule } from "@angular/common";
 import { RouterModule, Routes } from "@angular/router";
 import { CategoriasComponent } from "./modules/categorias/categorias.component";
 import { CategoriaFormComponent } from "./modules/categorias/categoria-form/categoria-form.component";
-import { HomeComponent } from "./components/home/home.component";
 import { LoginComponent } from "./modules/login/login.component";
+import { AuthGuardService } from "./services/guard/auth-guard.service";
 
 const routes: Routes = [
-  { path: "", component: HomeComponent },
+  { path: "", component: LoginComponent, canActivate: [AuthGuardService] },
   { path: "login", component: LoginComponent },
-  { path: "categorias", component: CategoriasComponent },
-  { path: "categorias/form/:id", component: CategoriaFormComponent },
-  { path: "categorias/form", component: CategoriaFormComponent }
+  {
+    path: "categorias",
+    component: CategoriasComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: "categorias/form/:id",
+    component: CategoriaFormComponent,
+    canActivate: [AuthGuardService]
+  },
+  {
+    path: "categorias/form",
+    component: CategoriaFormComponent,
+    canActivate: [AuthGuardService]
+  }
 ];
 
 @NgModule({

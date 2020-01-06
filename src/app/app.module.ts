@@ -10,15 +10,14 @@ import { AppRoutingModule } from "./app-routing.module";
 import { HttpClientModule } from "@angular/common/http";
 import { ButtonsComponent } from "./components/buttons/buttons.component";
 import { CategoriaFormComponent } from "./modules/categorias/categoria-form/categoria-form.component";
-import { HomeComponent } from "./components/home/home.component";
 import { ButtonsFormComponent } from "./components/buttons-form/buttons-form.component";
 import { PreLoadingComponent } from "./components/pre-loading/pre-loading.component";
 import { ShowColumnsComponent } from "./components/show-columns/show-columns.component";
 import { FilterInputComponent } from "./components/filter-input/filter-input.component";
 import { TableComponent } from "./components/table/table.component";
-import { ProdutosComponent } from "./modules/produto/produtos.component";
 import { LoginComponent } from "./modules/login/login.component";
-import { AuthService } from "./modules/login/auth/auth.service";
+import { AuthService } from "./services/auth/auth.service";
+import { AuthGuardService } from "./services/guard/auth-guard.service";
 
 @NgModule({
   declarations: [
@@ -27,13 +26,11 @@ import { AuthService } from "./modules/login/auth/auth.service";
     MenuComponent,
     ButtonsComponent,
     CategoriaFormComponent,
-    HomeComponent,
     ButtonsFormComponent,
     PreLoadingComponent,
     ShowColumnsComponent,
     FilterInputComponent,
     TableComponent,
-    ProdutosComponent,
     LoginComponent
   ],
   imports: [
@@ -43,7 +40,7 @@ import { AuthService } from "./modules/login/auth/auth.service";
     FormsModule,
     NgbModule
   ],
-  providers: [AuthService],
+  providers: [AuthService, AuthGuardService],
   bootstrap: [AppComponent]
 })
 export class AppModule {}

@@ -1,5 +1,5 @@
 import { Component, OnInit, Output, EventEmitter } from "@angular/core";
-import { AuthService } from "./auth/auth.service";
+import { AuthService } from "../../services/auth/auth.service";
 import { Usuario } from "../../models/usuario.model";
 
 @Component({
